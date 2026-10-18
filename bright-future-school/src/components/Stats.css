@@ -1,120 +1,99 @@
+/* ============================================================
+   STATS SECTION — Full-width dark bar with counters
+   ============================================================ */
 .stats-section {
   position: relative;
-  z-index: 10;
-  margin-top: -40px;
-  padding: 0 0 50px 0;
+  background: var(--navy);
+  padding: 3.5rem 0;
+  overflow: hidden;
+}
+
+/* Subtle diagonal line accents */
+.stats-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(245,184,0,.07) 0%, transparent 50%),
+    linear-gradient(225deg, rgba(245,184,0,.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.stats-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
 }
 
+/* Vertical dividers between cards */
 .stat-card {
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  padding: 28px 24px;
-  box-shadow: 0 10px 30px rgba(11, 31, 75, 0.08);
-  border: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  transition: all var(--transition-normal);
-  position: relative;
-  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  padding: 1.75rem 1rem;
+  border-right: 1px solid rgba(255,255,255,.1);
+  animation: fadeUp .6s ease both;
+  transition: background .25s;
 }
 
-.stat-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-navy) 0%, var(--color-gold) 100%);
-  opacity: 0;
-  transition: opacity var(--transition-fast);
+.stat-card:last-child {
+  border-right: none;
 }
 
 .stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 36px rgba(11, 31, 75, 0.12);
-  border-color: rgba(245, 184, 0, 0.4);
+  background: rgba(245,184,0,.07);
 }
 
-.stat-card:hover::before {
-  opacity: 1;
+.stat-icon {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: .2rem;
 }
 
-.stat-icon-wrapper {
-  font-size: 1.8rem;
-  width: 52px;
-  height: 52px;
-  background-color: var(--color-bg-page);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-  border: 1px solid var(--color-border);
-}
-
-.stat-data {
-  width: 100%;
-}
-
-.stat-number {
-  display: block;
-  font-size: 2.5rem;
+.stat-value {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 800;
-  color: var(--color-navy);
-  line-height: 1.1;
-  margin-bottom: 6px;
+  color: var(--gold);
+  line-height: 1;
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
 }
 
 .stat-label {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--color-text-main);
-  margin-bottom: 6px;
+  font-size: .78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.65);
+  text-align: center;
+  letter-spacing: .04em;
+  text-transform: uppercase;
 }
 
-.stat-detail {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  line-height: 1.45;
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 1024px) {
+/* Responsive */
+@media (max-width: 960px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .stat-card:nth-child(3) { border-right: none; }
+  .stat-card:nth-child(n+4) { border-top: 1px solid rgba(255,255,255,.1); }
+}
+
+@media (max-width: 560px) {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
   }
-}
-
-@media (max-width: 600px) {
-  .stats-section {
-    margin-top: 20px;
-    padding: 0 0 30px 0;
-  }
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .stat-card {
-    padding: 20px;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
-  }
-  .stat-icon-wrapper {
-    margin-bottom: 0;
-    flex-shrink: 0;
-  }
-  .stat-number {
-    font-size: 2rem;
-  }
+  .stat-card:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.1); }
+  .stat-card:nth-child(even) { border-right: none; }
+  .stat-card:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.1); }
+  .stat-card:nth-child(3) { border-right: 1px solid rgba(255,255,255,.1); }
 }

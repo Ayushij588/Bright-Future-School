@@ -1,103 +1,56 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Stats.css";
 
-function Counter({ end, suffix }) {
+const STATS = [
+  { icon: "🏫", value: 15, suffix: "+", label: "Years of Excellence" },
+  { icon: "👩‍🎓", value: 4200, suffix: "+", label: "Students Enrolled" },
+  { icon: "👩‍🏫", value: 180, suffix: "+", label: "Expert Faculty" },
+  { icon: "🏆", value: 320, suffix: "+", label: "Awards & Honours" },
+  { icon: "📊", value: 98,  suffix: "%",  label: "Board Pass Rate" },
+  { icon: "🌍", value: 40,  suffix: "+",  label: "Countries Represented" },
+];
+
+function Counter({ end, suffix, active }) {
   const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
-  const boxRef = useRef(null);
-
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setStarted(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (boxRef.current) {
-      observer.observe(boxRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!started) return;
-
-    const steps = 50;
-    const increment = end / steps;
-    let current = 0;
-
+    if (!active) return;
+    let start = 0;
+    const duration = 1800;
+    const step = Math.ceil(end / (duration / 16));
     const timer = setInterval(() => {
-      current += increment;
-      if (current >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, 25);
-
+      start = Math.min(start + step, end);
+      setCount(start);
+      if (start >= end) clearInterval(timer);
+    }, 16);
     return () => clearInterval(timer);
-  }, [started, end]);
-
-  return (
-    <span ref={boxRef} className="stat-number">
-      {count}
-      {suffix}
-    </span>
-  );
+  }, [active, end]);
+  return <>{count}{suffix}</>;
 }
 
 export default function Stats() {
-  const stats = [
-    {
-      icon: "👥",
-      number: 1500,
-      suffix: "+",
-      label: "Happy Students",
-      detail: "Thriving in a supportive, engaging atmosphere",
-    },
-    {
-      icon: "👩‍🏫",
-      number: 80,
-      suffix: "+",
-      label: "Expert Teachers",
-      detail: "Passionate mentors dedicated to student growth",
-    },
-    {
-      icon: "🏛️",
-      number: 25,
-      suffix: "+",
-      label: "Years of Excellence",
-      detail: "Building tomorrow's leaders since 2001",
-    },
-    {
-      icon: "📈",
-      number: 98,
-      suffix: "%",
-      label: "Board Results",
-      detail: "Consistent high achievement in CBSE exams",
-    },
-  ];
+  const ref = useRef(null);
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setActive(true); obs.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
 
   return (
-    <section className="stats-section" aria-label="School Statistics and Milestones">
-      <div className="container">
-        <div className="stats-grid">
-          {stats.map((item) => (
-            <div className="stat-card" key={item.label}>
-              <div className="stat-icon-wrapper" aria-hidden="true">
-                {item.icon}
+    <section className="stats-section" ref={ref} aria-label="School statistics">
+      <div className="stats-inner">
+        <div className="container stats-grid">
+          {STATS.map((s, i) => (
+            <div className="stat-card" key={i} style={{ animationDelay: `${i * 80}ms` }}>
+              <div className="stat-icon" aria-hidden="true">{s.icon}</div>
+              <div className="stat-value">
+                <Counter end={s.value} suffix={s.suffix} active={active} />
               </div>
-              <div className="stat-data">
-                <Counter end={item.number} suffix={item.suffix} />
-                <h3 className="stat-label">{item.label}</h3>
-                <p className="stat-detail">{item.detail}</p>
-              </div>
+              <div className="stat-label">{s.label}</div>
             </div>
           ))}
         </div>

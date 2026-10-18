@@ -1,4 +1,4 @@
-import React from "react";
+
 import PageHero from "../components/ui/PageHero";
 import Contact from "../components/Contact";
 import "./AdmissionsPage.css";

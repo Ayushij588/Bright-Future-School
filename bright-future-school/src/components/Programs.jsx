@@ -1,63 +1,103 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { programs } from "../data/programsData";
-import Button from "./ui/Button";
 import "./Programs.css";
+
+const PROGRAMS = [
+  {
+    id: "primary",
+    label: "Foundation Years",
+    title: "Primary School",
+    subtitle: "Classes 1 – 5",
+    desc: "Building curiosity, creativity and strong foundational skills through activity-based learning.",
+    icon: "📚",
+    gradient: "linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%)",
+    accent: "#3b82f6",
+  },
+  {
+    id: "middle",
+    label: "Growth Phase",
+    title: "Middle School",
+    subtitle: "Classes 6 – 8",
+    desc: "Developing critical thinking, collaborative projects and co-curricular exploration.",
+    icon: "🔬",
+    gradient: "linear-gradient(135deg, #065f46 0%, #047857 100%)",
+    accent: "#10b981",
+  },
+  {
+    id: "secondary",
+    label: "Achievement",
+    title: "Secondary",
+    subtitle: "Classes 9 – 10 (CBSE)",
+    desc: "Rigorous academic preparation for CBSE Board with focus on conceptual mastery.",
+    icon: "📐",
+    gradient: "linear-gradient(135deg, #7c2d12 0%, #9a3412 100%)",
+    accent: "#f97316",
+  },
+  {
+    id: "senior",
+    label: "Excellence",
+    title: "Senior Secondary",
+    subtitle: "Classes 11 – 12 (Science / Commerce / Arts)",
+    desc: "Stream specialisation, competitive exam coaching and career guidance.",
+    icon: "🎓",
+    gradient: "linear-gradient(135deg, #581c87 0%, #6d28d9 100%)",
+    accent: "#a855f7",
+  },
+];
 
 export default function Programs() {
   return (
-    <section className="programs-section" id="academics" aria-label="Academic Programs">
+    <section className="programs-section" id="programs" aria-label="Academic programmes">
       <div className="container">
-        <div className="section-header-center">
-          <span className="section-tag">Curriculum & Learning</span>
-          <h2 className="section-title">Academic Programs Tailored for Every Age</h2>
+        <div className="section-header">
+          <span className="section-eyebrow">Our Curriculum</span>
+          <h2 className="section-title">Academic Programmes</h2>
           <p className="section-subtitle">
-            From early foundational exploration to rigorous Senior Secondary board and entrance prep, our curriculum nurtures intellect, character, and curiosity.
+            A structured, holistic learning pathway from foundational years through senior secondary.
           </p>
         </div>
 
         <div className="programs-grid">
-          {programs.map((prog) => (
-            <article className="program-card" key={prog.id}>
-              <div className="program-card-header">
-                <div className="program-icon-badge" aria-hidden="true">
-                  {prog.icon}
+          {PROGRAMS.map((prog) => (
+            <div
+              className="program-card"
+              key={prog.id}
+              style={{ "--prog-gradient": prog.gradient, "--prog-accent": prog.accent }}
+            >
+              {/* Card background gradient */}
+              <div className="program-card-bg"></div>
+
+              {/* Icon & badge */}
+              <div className="program-card-top">
+                <div className="program-icon-wrap">
+                  <span className="program-icon" aria-hidden="true">{prog.icon}</span>
                 </div>
-                <span className="program-classes-pill">{prog.classes}</span>
+                <span className="program-label">{prog.label}</span>
               </div>
 
-              <h3 className="program-card-title">{prog.title}</h3>
-              <p className="program-card-text">{prog.text}</p>
-
-              <div className="program-subjects-preview">
-                <span className="subjects-title">Key Learning Areas:</span>
-                <div className="subjects-tags">
-                  {prog.subjects.slice(0, 4).map((sub) => (
-                    <span className="subject-pill" key={sub}>
-                      {sub}
-                    </span>
-                  ))}
-                  {prog.subjects.length > 4 && (
-                    <span className="subject-pill more">+{prog.subjects.length - 4} more</span>
-                  )}
-                </div>
+              {/* Content */}
+              <div className="program-card-body">
+                <h3 className="program-title">{prog.title}</h3>
+                <p className="program-subtitle">{prog.subtitle}</p>
+                <p className="program-desc">{prog.desc}</p>
               </div>
 
+              {/* CTA */}
               <div className="program-card-footer">
-                <Link to={`/programs/${prog.id}`} className="program-detail-link">
-                  <span>Explore Programme Details</span>
-                  <span className="arrow-icon" aria-hidden="true">→</span>
+                <Link to={`/academics/${prog.id}`} className="program-cta-link">
+                  Learn More
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
                 </Link>
               </div>
-            </article>
+            </div>
           ))}
         </div>
 
-        <div className="programs-footer-cta text-center">
-          <p className="cta-note">Need help choosing the right class level for your child?</p>
-          <Button to="/academics" variant="navy" size="md">
-            View Complete Academics Overview
-          </Button>
+        {/* CTA strip */}
+        <div className="programs-cta-strip">
+          <p>Not sure which programme fits? <strong>Talk to our academic counsellors.</strong></p>
+          <Link to="/contact" className="programs-cta-btn">Book a Counselling Session</Link>
         </div>
       </div>
     </section>

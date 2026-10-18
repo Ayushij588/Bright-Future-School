@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import PageHero from "../components/ui/PageHero";
 import Button from "../components/ui/Button";
-import { GALLERY_ITEMS } from "../components/Gallery";
+import { GALLERY_ITEMS } from "../data/galleryData";
 import "./ActivitiesGalleryPage.css";
 
 export default function ActivitiesGalleryPage() {

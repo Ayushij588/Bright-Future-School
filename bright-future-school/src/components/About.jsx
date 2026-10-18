@@ -1,67 +1,82 @@
-import React from "react";
-import Button from "./ui/Button";
+import { Link } from "react-router-dom";
 import "./About.css";
 
-export default function About() {
-  const points = [
-    { title: "25+ Years of Proven Excellence", desc: "Trusted by thousands of families in Bhopal since establishment." },
-    { title: "Student-Centric Care", desc: "Passionate, approachable mentors focusing on individual child potential." },
-    { title: "Holistic Development", desc: "Balanced emphasis on academics, athletics, cultural arts, and ethics." },
-    { title: "Strong Moral Values & Discipline", desc: "Fostering respect, integrity, teamwork, and responsible citizenship." },
-  ];
+const ABOUT_STATS = [
+  { value: "15+", label: "Years of Trust" },
+  { value: "4200+", label: "Students" },
+  { value: "98%", label: "Board Pass Rate" },
+  { value: "180+", label: "Faculty Members" },
+];
 
+const PILLARS = [
+  { icon: "🎓", text: "Academic Excellence" },
+  { icon: "💡", text: "Innovation & Research" },
+  { icon: "🤝", text: "Values & Character" },
+  { icon: "🌍", text: "Global Citizenship" },
+];
+
+export default function About() {
   return (
     <section className="about-section" id="about" aria-label="About Bright Future School">
       <div className="container">
-        <div className="about-wrapper">
-          {/* Left Column: Image with Experience Badge */}
+        <div className="about-grid">
+          {/* LEFT: Visual panel */}
           <div className="about-visual">
-            <div className="about-image-card">
-              <img
-                src="/images/about.jpg"
-                alt="Bright Future School students engaged in collaborative classroom learning"
-                className="about-main-img"
-                loading="lazy"
-              />
-              <div className="about-experience-stamp">
-                <span className="stamp-number">25+</span>
-                <span className="stamp-text">Years of Quality Education</span>
+            <div className="about-image-frame">
+              <div className="about-campus-img" role="img" aria-label="Bright Future School campus"></div>
+              {/* Floating quick-stat card */}
+              <div className="about-float-card">
+                <div className="about-float-icon">🏆</div>
+                <div>
+                  <div className="about-float-value">320+</div>
+                  <div className="about-float-label">Awards & Honours</div>
+                </div>
               </div>
+              {/* Established badge */}
+              <div className="about-est-badge">
+                <span>Est.</span>
+                <strong>2009</strong>
+              </div>
+            </div>
+
+            {/* Mini stats row */}
+            <div className="about-mini-stats">
+              {ABOUT_STATS.map((s, i) => (
+                <div className="about-mini-stat" key={i}>
+                  <div className="about-mini-val">{s.value}</div>
+                  <div className="about-mini-lbl">{s.label}</div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Right Column: Text & Verified Points */}
+          {/* RIGHT: Text + pillars */}
           <div className="about-content">
-            <span className="section-tag">About Our School</span>
-            <h2 className="section-title">A Place Where Every Child Grows & Succeeds</h2>
-            
+            <span className="section-eyebrow">About Our School</span>
+            <h2 className="section-title">Nurturing Excellence Since 2009</h2>
             <p className="about-lead">
-              Bright Future School is dedicated to giving every student the confidence, knowledge, and lifelong values needed to thrive in an ever-changing world.
+              Bright Future School is one of Bhopal's most trusted CBSE co-educational institutions, committed to delivering world-class education while fostering holistic development, moral values, and global awareness.
+            </p>
+            <p className="about-body">
+              With a legacy of academic excellence, a team of over 180 dedicated educators, and a vibrant campus equipped with modern infrastructure, we offer every student the tools, environment, and mentorship they need to reach their fullest potential.
             </p>
 
-            <p className="about-description">
-              Our campus in Bhopal provides a warm, disciplined, and intellectually stimulating environment where students are motivated to explore their curiosity, achieve academic heights, and develop leadership qualities.
-            </p>
-
-            <div className="about-checklist">
-              {points.map((pt, idx) => (
-                <div className="about-check-item" key={idx}>
-                  <div className="about-check-icon" aria-hidden="true">✓</div>
-                  <div>
-                    <h4 className="about-check-title">{pt.title}</h4>
-                    <p className="about-check-desc">{pt.desc}</p>
-                  </div>
+            <div className="about-pillars-grid">
+              {PILLARS.map((p, i) => (
+                <div className="about-pillar" key={i}>
+                  <span className="about-pillar-icon" aria-hidden="true">{p.icon}</span>
+                  <span className="about-pillar-text">{p.text}</span>
                 </div>
               ))}
             </div>
 
-            <div className="about-action-row">
-              <Button to="/about" variant="navy" size="md">
-                Read Our Full Story →
-              </Button>
-              <Button to="/admissions" variant="primary" size="md">
-                Admission Enquiry
-              </Button>
+            <div className="about-actions">
+              <Link to="/about" className="btn btn-primary btn-md">
+                Our Full Story
+              </Link>
+              <Link to="/admissions" className="btn btn-outline btn-md">
+                Apply Now
+              </Link>
             </div>
           </div>
         </div>

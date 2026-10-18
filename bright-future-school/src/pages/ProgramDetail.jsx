@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { programs } from "../data/programsData";
 import PageHero from "../components/ui/PageHero";

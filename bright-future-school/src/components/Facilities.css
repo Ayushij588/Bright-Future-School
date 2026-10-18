@@ -1,107 +1,181 @@
-.facilities-section {
+/* ============================================================
+   ACTIVITIES SECTION
+   ============================================================ */
+.activities-section {
   padding: var(--section-padding);
-  background-color: var(--color-white);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  background: var(--bg-light);
 }
 
-.facilities-grid {
+.activities-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.facility-card {
-  background-color: var(--color-bg-page);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 30px;
+/* ── Activity card ── */
+.activity-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--act-bg);
+  cursor: default;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0,0,0,.22);
+}
+
+.activity-card-inner {
+  padding: 2rem 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Light reflections overlay */
+.activity-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(255,255,255,.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.activity-emoji {
+  font-size: 2.6rem;
+  margin-bottom: .85rem;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.3));
+}
+
+.activity-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 1rem;
+}
+
+.activity-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  transition: all var(--transition-normal);
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.activity-items li {
+  font-size: .84rem;
+  color: rgba(255,255,255,.8);
+  padding-left: 1rem;
   position: relative;
 }
 
-.facility-card:hover {
-  transform: translateY(-5px);
-  background-color: var(--color-white);
-  border-color: rgba(245, 184, 0, 0.45);
-  box-shadow: var(--shadow-lg);
+.activity-items li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: rgba(255,255,255,.6);
+  font-weight: 700;
 }
 
-.facility-icon-wrap {
-  width: 56px;
-  height: 56px;
-  background-color: var(--color-gold-light);
-  border: 1px solid rgba(245, 184, 0, 0.3);
-  border-radius: var(--radius-md);
+/* ── CTA row ── */
+.activities-cta {
+  text-align: center;
+}
+
+.activities-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .8rem 1.75rem;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 700;
+  font-size: .9rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background .2s, transform .15s, gap .2s;
+}
+
+.activities-link-btn:hover {
+  background: #1a3a7a;
+  transform: translateY(-2px);
+  gap: .75rem;
+}
+
+.activities-link-btn svg {
+  transition: transform .2s;
+}
+
+.activities-link-btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* ============================================================
+   FACILITIES STRIP
+   ============================================================ */
+.facilities-strip {
+  background: var(--navy);
+  padding: 1.6rem 0;
+}
+
+.facilities-strip-grid {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
-  flex-shrink: 0;
-  transition: transform var(--transition-bounce);
+  flex-wrap: wrap;
+  gap: 0;
 }
 
-.facility-card:hover .facility-icon-wrap {
-  transform: scale(1.1) rotate(4deg);
-}
-
-.facility-content {
+.facility-pill {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  padding: .8rem 1.5rem;
+  border-right: 1px solid rgba(255,255,255,.1);
+  transition: background .2s;
 }
 
-.facility-tag {
-  display: inline-block;
-  align-self: flex-start;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-navy);
-  background-color: rgba(11, 31, 75, 0.06);
-  padding: 3px 8px;
-  border-radius: var(--radius-sm);
-  margin-bottom: 8px;
+.facility-pill:last-child {
+  border-right: none;
 }
 
-.facility-title {
-  font-size: 1.18rem;
-  font-weight: 800;
-  color: var(--color-navy);
-  margin-bottom: 8px;
-  line-height: 1.35;
+.facility-pill:hover {
+  background: rgba(245,184,0,.1);
 }
 
-.facility-desc {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  line-height: 1.6;
+.facility-pill-icon {
+  font-size: 1.15rem;
 }
 
-@media (max-width: 1024px) {
-  .facilities-grid {
+.facility-pill-label {
+  font-size: .8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.75);
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .activities-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 640px) {
-  .facilities-section {
-    padding: var(--section-padding-mobile);
-  }
-  .facilities-grid {
+@media (max-width: 600px) {
+  .activities-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
   }
-  .facility-card {
-    padding: 20px;
-    gap: 16px;
-  }
-  .facility-icon-wrap {
-    width: 48px;
-    height: 48px;
-    font-size: 1.5rem;
+
+  .facility-pill {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    width: 50%;
+    justify-content: center;
   }
 }

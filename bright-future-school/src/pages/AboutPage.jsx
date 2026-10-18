@@ -1,4 +1,4 @@
-import React from "react";
+
 import PageHero from "../components/ui/PageHero";
 import Button from "../components/ui/Button";
 import Stats from "../components/Stats";
