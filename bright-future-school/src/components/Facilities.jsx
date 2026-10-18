@@ -1,4 +1,4 @@
-import React from "react";
+
 import "./Facilities.css";
 
 export default function Facilities() {

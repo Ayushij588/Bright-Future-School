@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, Link } from "react-router-dom";
 import Button from "./ui/Button";
 import "./Navbar.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
-
-  // Close menu on route change
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location.pathname]);
 
   // Handle scroll shadow effect
   useEffect(() => {
@@ -28,23 +22,23 @@ export default function Navbar() {
 
   const navItems = [
     { label: "Home", to: "/" },
-    { label: "About Us", to: "/about" },
+    { label: "About", to: "/about" },
     { label: "Academics", to: "/academics" },
-    { label: "Activities & Gallery", to: "/activities-gallery" },
+    { label: "Activities", to: "/activities-gallery" },
     { label: "Admissions", to: "/admissions" },
-    { label: "News & Events", to: "/news" },
-    { label: "Contact Us", to: "/contact" },
+    { label: "Events", to: "/news" },
+    { label: "Contact", to: "/contact" },
   ];
 
   return (
     <header className={`bfs-navbar-wrapper ${scrolled ? "scrolled" : ""}`}>
       <nav className="bfs-navbar container" aria-label="Main Navigation">
         {/* School Logo & Brand */}
-        <Link to="/" className="bfs-brand" aria-label="Bright Future School Home">
+        <Link to="/" className="bfs-brand" aria-label="Bright Future School Home" onClick={() => setIsOpen(false)}>
           <div className="bfs-logo-icon" aria-hidden="true">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
             </svg>
           </div>
           <div className="bfs-brand-text">

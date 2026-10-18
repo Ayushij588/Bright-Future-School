@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PageHero from "../components/ui/PageHero";
-import Button from "../components/ui/Button";
 import "./NewsEventsPage.css";
 
 export default function NewsEventsPage() {

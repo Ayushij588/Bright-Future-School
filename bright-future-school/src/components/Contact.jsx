@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "./ui/Button";
 import "./Contact.css";
 
@@ -43,7 +43,7 @@ export default function Contact({ isStandalone = false }) {
         const existing = JSON.parse(localStorage.getItem("bfs_enquiries") || "[]");
         existing.push(enquiryRecord);
         localStorage.setItem("bfs_enquiries", JSON.stringify(existing));
-      } catch (err) {
+      } catch {
         // Fallback gracefully if storage restricted
       }
 

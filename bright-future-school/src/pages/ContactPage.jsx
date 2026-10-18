@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PageHero from "../components/ui/PageHero";
 import Contact from "../components/Contact";
 import "./ContactPage.css";
