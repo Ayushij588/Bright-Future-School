@@ -1,0 +1,11 @@
+/* App Root Layout Styles */
+.bfs-app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-bg-page);
+}
+
+.bfs-page-container {
+  flex: 1 0 auto;
+}

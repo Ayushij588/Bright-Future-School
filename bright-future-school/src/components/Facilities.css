@@ -1,0 +1,107 @@
+.facilities-section {
+  padding: var(--section-padding);
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.facility-card {
+  background-color: var(--color-bg-page);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.facility-card:hover {
+  transform: translateY(-5px);
+  background-color: var(--color-white);
+  border-color: rgba(245, 184, 0, 0.45);
+  box-shadow: var(--shadow-lg);
+}
+
+.facility-icon-wrap {
+  width: 56px;
+  height: 56px;
+  background-color: var(--color-gold-light);
+  border: 1px solid rgba(245, 184, 0, 0.3);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  transition: transform var(--transition-bounce);
+}
+
+.facility-card:hover .facility-icon-wrap {
+  transform: scale(1.1) rotate(4deg);
+}
+
+.facility-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.facility-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-navy);
+  background-color: rgba(11, 31, 75, 0.06);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+}
+
+.facility-title {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.facility-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .facilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .facilities-section {
+    padding: var(--section-padding-mobile);
+  }
+  .facilities-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .facility-card {
+    padding: 20px;
+    gap: 16px;
+  }
+  .facility-icon-wrap {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,156 @@
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  background:
+    url("/images/school.jpg") center center / cover no-repeat;
+  color: var(--color-white);
+  padding: 80px 0 90px 0;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(7, 21, 51, 0.94) 0%,
+    rgba(11, 31, 75, 0.88) 55%,
+    rgba(11, 31, 75, 0.65) 100%
+  );
+  z-index: 1;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  max-width: 780px;
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.hero-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(245, 184, 0, 0.16);
+  border: 1px solid rgba(245, 184, 0, 0.45);
+  backdrop-filter: blur(8px);
+  color: var(--color-gold);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.hero-tag-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-gold);
+  animation: pulseGlow 2s infinite;
+}
+
+.hero-headline {
+  font-size: 3.6rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 22px;
+  letter-spacing: -0.03em;
+  color: var(--color-white);
+}
+
+.hero-headline-accent {
+  color: var(--color-gold);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-lead {
+  font-size: 1.22rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 34px;
+  max-width: 660px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+}
+
+/* Quick highlight pills */
+.hero-quick-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hero-quick-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  transition: all var(--transition-fast);
+}
+
+.hero-quick-pill:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+.hero-pill-icon {
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-headline {
+    font-size: 2.8rem;
+  }
+  .hero-lead {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: auto;
+    padding: 60px 0 70px 0;
+  }
+  .hero-headline {
+    font-size: 2.15rem;
+  }
+  .hero-br {
+    display: none;
+  }
+  .hero-lead {
+    font-size: 1rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .hero-buttons .bfs-btn {
+    width: 100%;
+  }
+}

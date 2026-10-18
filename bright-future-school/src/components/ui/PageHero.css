@@ -1,0 +1,86 @@
+.page-hero {
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(11, 31, 75, 0.94) 0%, rgba(7, 21, 51, 0.96) 100%),
+    url("/images/school.jpg") center / cover no-repeat;
+  color: var(--color-white);
+  padding: 60px 0 70px 0;
+  border-bottom: 3px solid var(--color-gold);
+}
+
+.page-hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.page-hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+}
+
+.page-hero-breadcrumb a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.page-hero-breadcrumb a:hover {
+  color: var(--color-gold);
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.breadcrumb-active {
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.page-hero-badge {
+  display: inline-block;
+  background-color: rgba(245, 184, 0, 0.2);
+  color: var(--color-gold);
+  border: 1px solid rgba(245, 184, 0, 0.45);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+}
+
+.page-hero-title {
+  font-size: 2.85rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+}
+
+.page-hero-subtitle {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 680px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 40px 0 50px 0;
+  }
+  .page-hero-title {
+    font-size: 2.1rem;
+  }
+  .page-hero-subtitle {
+    font-size: 1rem;
+  }
+}
