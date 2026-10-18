@@ -190,6 +190,99 @@ section {
   }
 }
 
+/* Shorthand aliases (used across components) */
+:root {
+  --navy:      #0b1f4b;
+  --gold:      #f5b800;
+  --text-muted: #64748b;
+  --bg-light:  #f4f6fb;
+  --section-padding: 80px 0;
+}
+
+/* ── Section eyebrow label ── */
+.section-eyebrow {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 2px solid rgba(245,184,0,.4);
+  padding-bottom: .15rem;
+  margin-bottom: .75rem;
+}
+
+/* ── Section header layout ── */
+.section-header {
+  margin-bottom: 2.75rem;
+}
+
+.section-header .section-title {
+  margin-bottom: .75rem;
+}
+
+.section-header .section-subtitle {
+  margin-bottom: 0;
+}
+
+/* ── Button utility classes (used in About, etc.) ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  padding: .75rem 1.5rem;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: .9rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background .2s, color .2s, border-color .2s, transform .15s;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+
+.btn-primary:hover {
+  background: #1a3a7a;
+  border-color: #1a3a7a;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border-color: var(--navy);
+}
+
+.btn-outline:hover {
+  background: var(--navy);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+}
+
+.btn-gold:hover {
+  background: #e0a800;
+  border-color: #e0a800;
+  transform: translateY(-2px);
+}
+
+.btn-sm { padding: .55rem 1.1rem; font-size: .82rem; }
+.btn-md { padding: .75rem 1.5rem; font-size: .9rem; }
+.btn-lg { padding: .9rem 2rem;   font-size: 1rem; }
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .section-title {

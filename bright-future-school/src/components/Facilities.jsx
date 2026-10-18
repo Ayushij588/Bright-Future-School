@@ -1,72 +1,120 @@
-
+import { Link } from "react-router-dom";
 import "./Facilities.css";
 
+const ACTIVITIES = [
+  {
+    emoji: "⚽",
+    title: "Sports & Athletics",
+    items: ["Cricket", "Football", "Basketball", "Athletics", "Yoga & Fitness"],
+    color: "#1e40af",
+    bg: "linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%)",
+  },
+  {
+    emoji: "🎨",
+    title: "Arts & Culture",
+    items: ["Painting", "Pottery", "Sculpture", "Dance", "Drama & Theatre"],
+    color: "#7c3aed",
+    bg: "linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%)",
+  },
+  {
+    emoji: "🎵",
+    title: "Music & Performance",
+    items: ["Vocal Training", "Guitar", "Tabla", "Keyboard", "Choir"],
+    color: "#047857",
+    bg: "linear-gradient(135deg, #065f46 0%, #047857 100%)",
+  },
+  {
+    emoji: "🔬",
+    title: "STEM & Innovation",
+    items: ["Robotics Lab", "Coding Club", "Science Fair", "Math Olympiad", "Research Projects"],
+    color: "#b45309",
+    bg: "linear-gradient(135deg, #92400e 0%, #b45309 100%)",
+  },
+  {
+    emoji: "📚",
+    title: "Literary & Debate",
+    items: ["Public Speaking", "Debate Club", "Creative Writing", "MUN", "Quiz Competitions"],
+    color: "#0e7490",
+    bg: "linear-gradient(135deg, #0c4a6e 0%, #0e7490 100%)",
+  },
+  {
+    emoji: "🏕️",
+    title: "Scouts & Adventure",
+    items: ["NCC", "Scouts & Guides", "Trekking", "First Aid", "Community Service"],
+    color: "#b91c1c",
+    bg: "linear-gradient(135deg, #7f1d1d 0%, #b91c1c 100%)",
+  },
+];
+
+const FACILITIES = [
+  { icon: "🔬", label: "Modern Science Labs" },
+  { icon: "🖥️", label: "Smart Classrooms" },
+  { icon: "📚", label: "Central Library" },
+  { icon: "🚌", label: "GPS Transport" },
+  { icon: "🏊", label: "Swimming Pool" },
+  { icon: "🎭", label: "Auditorium" },
+  { icon: "🌿", label: "Green Campus" },
+  { icon: "🛡️", label: "24/7 CCTV Security" },
+];
+
 export default function Facilities() {
-  const facilityList = [
-    {
-      icon: "🔬",
-      title: "Modern Science & Computer Labs",
-      desc: "Fully equipped Physics, Chemistry, Biology, and high-speed Computer laboratories designed for hands-on experiential experiments.",
-      tag: "Experiential Learning",
-    },
-    {
-      icon: "🖥️",
-      title: "Smart Digital Classrooms",
-      desc: "Interactive digital displays, audio-visual instructional technology, and modern ergonomically designed student seating.",
-      tag: "Interactive Tech",
-    },
-    {
-      icon: "📚",
-      title: "Comprehensive Central Library",
-      desc: "A rich collection of academic books, literature, reference journals, newspapers, and a quiet dedicated reading sanctuary.",
-      tag: "Resource Hub",
-    },
-    {
-      icon: "⚽",
-      title: "Expansive Sports Grounds",
-      desc: "Dedicated zones for cricket, football, basketball, yoga, athletics, and indoor games like chess and table tennis.",
-      tag: "Fitness & Teamwork",
-    },
-    {
-      icon: "🎨",
-      title: "Creative Arts & Music Studio",
-      desc: "A vibrant space where students nurture creativity through painting, sketching, pottery, vocal training, and musical instruments.",
-      tag: "Cultural Talent",
-    },
-    {
-      icon: "🚌",
-      title: "Safe GPS Transport & 24/7 CCTV",
-      desc: "Fleet of well-maintained school buses with trained drivers, female attendants, live GPS tracking, and complete CCTV surveillance.",
-      tag: "Student Safety",
-    },
-  ];
-
   return (
-    <section className="facilities-section" id="facilities" aria-label="Campus Facilities">
-      <div className="container">
-        <div className="section-header-center">
-          <span className="section-tag navy">Campus Life & Infrastructure</span>
-          <h2 className="section-title">World-Class Facilities for Holistic Growth</h2>
-          <p className="section-subtitle">
-            Our campus provides a secure, well-equipped, and inspiring environment designed to foster intellectual curiosity, physical fitness, and artistic exploration.
-          </p>
-        </div>
+    <>
+      {/* ── ACTIVITIES SECTION ── */}
+      <section className="activities-section" id="activities" aria-label="Co-curricular activities">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-eyebrow">Beyond the Classroom</span>
+            <h2 className="section-title">Co-Curricular Activities</h2>
+            <p className="section-subtitle">
+              We believe in nurturing every dimension of a student's personality — sporting, artistic, scientific and social.
+            </p>
+          </div>
 
-        <div className="facilities-grid">
-          {facilityList.map((item, index) => (
-            <div className="facility-card" key={index}>
-              <div className="facility-icon-wrap" aria-hidden="true">
-                {item.icon}
+          <div className="activities-grid">
+            {ACTIVITIES.map((act, i) => (
+              <div
+                className="activity-card"
+                key={i}
+                style={{ "--act-bg": act.bg, "--act-color": act.color }}
+              >
+                <div className="activity-card-inner">
+                  <div className="activity-emoji" aria-hidden="true">{act.emoji}</div>
+                  <h3 className="activity-title">{act.title}</h3>
+                  <ul className="activity-items">
+                    {act.items.map((item, j) => (
+                      <li key={j}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="facility-content">
-                <span className="facility-tag">{item.tag}</span>
-                <h3 className="facility-title">{item.title}</h3>
-                <p className="facility-desc">{item.desc}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          <div className="activities-cta">
+            <Link to="/activities" className="activities-link-btn">
+              Explore All Activities &amp; Gallery
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </Link>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* ── FACILITIES STRIP ── */}
+      <section className="facilities-strip" aria-label="Campus facilities">
+        <div className="container">
+          <div className="facilities-strip-grid">
+            {FACILITIES.map((f, i) => (
+              <div className="facility-pill" key={i}>
+                <span className="facility-pill-icon" aria-hidden="true">{f.icon}</span>
+                <span className="facility-pill-label">{f.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

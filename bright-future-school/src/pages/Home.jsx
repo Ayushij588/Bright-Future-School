@@ -6,35 +6,45 @@ import About from "../components/About";
 import Programs from "../components/Programs";
 import Facilities from "../components/Facilities";
 import Gallery from "../components/Gallery";
+import Testimonials from "../components/Testimonials";
 import News from "../components/News";
+import CampusTourCTA from "../components/CampusTourCTA";
 import Contact from "../components/Contact";
 
 export default function Home() {
   return (
     <main id="main-content">
-      {/* 3. Hero Section */}
+      {/* 1. Hero + Enquiry Form + Highlights Bar */}
       <Hero />
 
-      {/* 4. Verified Highlights & Key Stats */}
+      {/* 2. Animated Stats Bar */}
       <Stats />
+
+      {/* 3. School Pillars / Why Choose Us */}
       <Features />
 
-      {/* 5. About Us Preview */}
+      {/* 4. About Us — Two-column with campus image */}
       <About />
 
-      {/* 6. Academic Programs Cards */}
+      {/* 5. Academic Programmes — Gradient cards */}
       <Programs />
 
-      {/* 7. Full-width Facilities & Campus Highlights */}
+      {/* 6. Co-curricular Activities grid + Facilities strip */}
       <Facilities />
 
-      {/* 8. Activities & Student Life Gallery with Lightbox */}
+      {/* 7. Photo Gallery */}
       <Gallery limit={6} showFilter={true} showViewAll={true} />
+
+      {/* 8. Testimonials */}
+      <Testimonials />
 
       {/* 9. News & Announcements */}
       <News showViewAll={true} />
 
-      {/* 10. Admission Enquiry & Campus Visit */}
+      {/* 10. Campus Tour CTA Banner */}
+      <CampusTourCTA />
+
+      {/* 11. Admission Enquiry / Contact */}
       <Contact />
     </main>
   );
